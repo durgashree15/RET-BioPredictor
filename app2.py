@@ -1,6 +1,5 @@
 import os
-os.system("pip install rdkit")
-os.system("pip install joblib")
+os.system("pip install -r requirements.txt")
 import streamlit as st
 import pandas as pd
 from PIL import Image
