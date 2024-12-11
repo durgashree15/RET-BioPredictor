@@ -1,5 +1,9 @@
 # RET-BioPredictor
-The work is under review for publication. More details will be added once published. Contact to learn more.
+The work is under review for publication. 
+
+More details will be added once published. 
+
+Contact to learn more.
 
 <div align = "center">
   <p>Application that predicts the IC50 values between a protein and small molecules.</p>
