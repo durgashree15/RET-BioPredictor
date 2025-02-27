@@ -42,7 +42,7 @@ def process_data(df):
     # Drop the 'descriptors' column if you don't need it anymore
     df = df.drop('descriptors', axis=1)
 
-    model=joblib.load("gb_imp.pkl")
+    model=joblib.load("RET_Gradient_Boosting2.pkl")
 
     Bioactivity = model.predict(df.drop("Ligand SMILES", axis=1))
 
