@@ -43,6 +43,9 @@ def process_data(df):
     df = df.drop('descriptors', axis=1)
 
     model=joblib.load("GBR_Tuned_Model.pkl")
+    expected_features = model.feature_names_in_
+
+    df = df.reindex(columns=expected_features)
 
     Bioactivity = model.predict(df.drop("Ligand SMILES", axis=1))
 
@@ -204,4 +207,5 @@ with right:
     
 
         
+
 
