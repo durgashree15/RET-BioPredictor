@@ -47,7 +47,7 @@ def process_data(df):
     smiles = df["Ligand SMILES"]
     df = df.reindex(columns=expected_features)
 
-    Bioactivity = model.predict()
+    Bioactivity = model.predict(df)
 
     result = pd.DataFrame({
         'Column1': smiles,
@@ -207,6 +207,7 @@ with right:
     
 
         
+
 
 
 
