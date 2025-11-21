@@ -44,13 +44,13 @@ def process_data(df):
 
     model=joblib.load("GBR_Tuned_Model.pkl")
     expected_features = model.feature_names_in_
-
+    smiles = df["Ligand SMILES"]
     df = df.reindex(columns=expected_features)
 
-    Bioactivity = model.predict(df.drop("Ligand SMILES", axis=1))
+    Bioactivity = model.predict()
 
     result = pd.DataFrame({
-        'Column1': df["Ligand SMILES"],
+        'Column1': smiles,
         'Column2': Bioactivity
     })
     csv = result.to_csv(index=False)
@@ -207,5 +207,6 @@ with right:
     
 
         
+
 
 
