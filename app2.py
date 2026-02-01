@@ -43,15 +43,22 @@ def process_data(df):
     df = df.drop('descriptors', axis=1)
 
     model=joblib.load("GBR_Tuned_Model.pkl")
+    scalar = joblib.load("trained_scaler.pkl")
     expected_features = model.feature_names_in_
     smiles = df["Ligand SMILES"]
     df = df.reindex(columns=expected_features)
 
-    Bioactivity = model.predict(df)
+    df_scaled= pd.DataFrame(
+        scaler.transform(df_features),
+        columns=expected_features,
+        index=df_features.index
+    )
+
+    Bioactivity = model.predict(df_scaled)
 
     result = pd.DataFrame({
-        'Column1': smiles,
-        'Column2': Bioactivity
+        'Ligand SMILES': smiles,
+        'Predicted pIC50': Bioactivity
     })
     csv = result.to_csv(index=False)
     return csv
@@ -207,6 +214,7 @@ with right:
     
 
         
+
 
 
 
